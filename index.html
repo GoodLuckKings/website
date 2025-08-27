@@ -15,11 +15,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
 <style>
     :root{
       --bg:#0b0b0f;--fg:#f4f4f5;--muted:#b3b3b9;--brand:#ffd54a;--brand-2:#ff926b;--card:#121219;--accent:#2b2b37;
       --shadow:0 10px 30px rgba(0,0,0,.35);
-      --display:'Bungee Shade',system-ui,-apple-system,'Segoe UI',Roboto,Inter,Ubuntu,'Helvetica Neue',Arial,sans-serif;
+      --display:'Bungee','Bungee Shade',system-ui,-apple-system,'Segoe UI',Roboto,Inter,Ubuntu,'Helvetica Neue',Arial,sans-serif;
       --text:system-ui,-apple-system,Segoe UI,Roboto,Inter,Ubuntu,'Helvetica Neue',Arial,sans-serif;
     }
     *{box-sizing:border-box}
@@ -46,7 +47,7 @@
     .slides .overlay{position:absolute;inset:0;background:radial-gradient(60% 70% at 70% 40%,transparent,rgba(0,0,0,.4) 40%,rgba(0,0,0,.65));}
     .hero-content{position:relative;z-index:2}
     .tag{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;background:#16161f;border:1px solid #232331;color:var(--muted);font-size:12px}
-    .hero h2{font-family:var(--display);font-size:clamp(36px,7vw,64px);line-height:1.05;margin:.5rem 0 .25rem;color:var(--fg);text-shadow:0 2px 0 rgba(0,0,0,.35)}
+    .hero h2{font-family:var(--display);font-size:clamp(40px,7.5vw,72px);line-height:1.05;margin:.5rem 0 .25rem;color:#fff;letter-spacing:1.5px;position:relative}
     .hero p{max-width:720px;color:#d6d6dc;font-size:clamp(15px,2.6vw,18px)}
     .cta{display:flex;gap:12px;margin-top:18px}
     .btn{padding:12px 16px;border-radius:12px;border:1px solid transparent;background:var(--brand);color:#1b1200;font-weight:700}
@@ -105,6 +106,9 @@
       letter-spacing:.5px;
   }
 
+  /* Outlined headline style (double outline like reference) */
+  .outlined{position:relative;color:#fff;-webkit-text-stroke:3px #000;text-shadow:2px 2px 0 #000,-2px 2px 0 #000,2px -2px 0 #000,-2px -2px 0 #000,0 3px 0 #000,0 0 10px rgba(0,0,0,.35)}
+  .outlined::before{content:attr(data-text);position:absolute;inset:0;z-index:-1;color:transparent;-webkit-text-stroke:7px #fff}
 </style>
   <link rel="preload" as="image" href="https://goodluckkings.github.io/website/assets/DSC03936.jpg" />
   <script>
@@ -145,7 +149,7 @@
     </div>
     <div class="container hero-content">
       <span class="tag">St. Petersburg, Florida • Singer • Guitarist • Loop Artist</span>
-      <h2>Live music that makes the night.</h2>
+      <h2 class="outlined" data-text="Live music that makes the night.">Live music that makes the night.</h2>
       <p>Christian Gabriel blends soulful vocals, dynamic guitar, and tasteful looping to create full-band energy for solo shows — and leads the high‑energy <strong>Good Luck Kings</strong> for larger stages.</p>
       <div class="cta">
         <a class="btn" href="#contact">Book Christian</a>
@@ -312,6 +316,9 @@
       slides.forEach((s,idx)=> s.style.opacity = (idx===i? 1 : 0));
       i = (i+1) % slides.length;
     }, 5000);
+
+    // Duplicate text into data-text for outlined elements
+    document.querySelectorAll('.outlined').forEach(el=>{ if(!el.getAttribute('data-text')) el.setAttribute('data-text', el.textContent.trim()); });
 
     // Current year
     document.getElementById('year').textContent = new Date().getFullYear();
