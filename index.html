@@ -99,15 +99,15 @@
       .nav.open .nav-links{display:flex;flex-direction:column;gap:10px;position:absolute;top:58px;right:0;background:#11111a;border:1px solid #212133;padding:10px 12px;border-radius:12px}
     }
     /* Display font for logo & headings only */
-  :where(h1,h2,h3,.brand h1){
+    :where(h1,h2,h3,.brand h1){
       font-family:var(--display);
       letter-spacing:.5px;
-  }
+    }
 
-  /* Outlined headline style (double outline like reference) */
-  .outlined{position:relative;color:#fff;-webkit-text-stroke:3px #000;text-shadow:2px 2px 0 #000,-2px 2px 0 #000,2px -2px 0 #000,-2px -2px 0 #000,0 3px 0 #000,0 0 10px rgba(0,0,0,.35)}
-  .outlined::before{content:attr(data-text);position:absolute;inset:0;z-index:-1;color:transparent;-webkit-text-stroke:7px #fff}
-</style>
+    /* Outlined headline style (double outline like reference) */
+    .outlined{position:relative;color:#fff;-webkit-text-stroke:3px #000;text-shadow:2px 2px 0 #000,-2px 2px 0 #000,2px -2px 0 #000,-2px -2px 0 #000,0 3px 0 #000,0 0 10px rgba(0,0,0,.35)}
+    .outlined::before{content:attr(data-text);position:absolute;inset:0;z-index:-1;color:transparent;-webkit-text-stroke:7px #fff}
+  </style>
   <link rel="preload" as="image" href="https://goodluckkings.github.io/website/assets/DSC03936.jpg" />
   <script>
     // Small helper: smooth scroll for in-page links
