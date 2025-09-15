@@ -11,7 +11,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Christian Gabriel — St. Pete, FL | Good Luck Kings" />
   <meta property="og:description" content="Singer, guitarist & loop artist in St. Petersburg, FL. Explore photos, learn about the Good Luck Kings band, and book a show." />
-  <meta property="og:image" content="https://goodluckkings.github.io/website/assets/headerphotoblue.jpg" />
+  <meta property="og:image" content="https://goodluckkings.github.io/website/assets/DSC03936.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet"><style>
@@ -130,7 +130,7 @@
     .outlined{position:relative;color:#fff;-webkit-text-stroke:3px #000;text-shadow:2px 2px 0 #000,-2px 2px 0 #000,2px -2px 0 #000,-2px -2px 0 #000,0 3px 0 #000,0 0 10px rgba(0,0,0,.35)}
     .outlined::before{content:attr(data-text);position:absolute;inset:0;z-index:-1;color:transparent;-webkit-text-stroke:7px #fff}
   </style>
-  <link rel="preload" as="image" href="https://goodluckkings.github.io/website/assets/headerphotoblue.jpg" />
+  <link rel="preload" as="image" href="https://goodluckkings.github.io/website/assets/DSC03936.jpg" />
   <script>
     // Smooth scroll for in-page links with sticky-header offset
     (function(){
@@ -386,8 +386,7 @@
             <p style="color:var(--muted);font-size:14px">Perfer a DM? Links for Instagram and Facebook are at the bottom of the page</p>
           </div>
           <div>
-            <!-- NOTE: onsubmit was removed; JS below handles composing the mailto -->
-            <form id="inquiry">
+            <form id="inquiry" onsubmit="event.preventDefault(); alert('Thanks! Your message would be sent to the booking email when hooked up to a backend.');">
               <label for="name">Name<span aria-hidden="true">*</span></label>
               <input id="name" required placeholder="Your name" style="width:100%;margin:.35rem 0 1rem;padding:.8rem;border-radius:10px;border:1px solid #2b2b3a;background:#0f0f16;color:#fff"/>
               <label for="email">Email<span aria-hidden="true">*</span></label>
@@ -471,42 +470,6 @@
         btn.replaceWith(frame);
       }, { passive:false });
     });
-
-    // --- Send Inquiry -> open email draft with prefilled content ---
-    (function(){
-      const form = document.getElementById('inquiry');
-      const status = document.getElementById('formStatus');
-      if(!form) return;
-
-      form.addEventListener('submit', function(e){
-        e.preventDefault();
-        const name = (document.getElementById('name')?.value || '').trim();
-        const fromEmail = (document.getElementById('email')?.value || '').trim();
-        const details = (document.getElementById('details')?.value || '').trim();
-
-        // Basic guard for required fields (HTML5 required also handles this)
-        if(!name || !fromEmail){
-          alert('Please fill in your name and email.');
-          return;
-        }
-
-        const subject = 'Booking Inquiry for Christian Gabriel';
-        const bodyLines = [
-          `Name: ${name}`,
-          `Email: ${fromEmail}`,
-          '',
-          'Details:',
-          details || '(none provided)'
-        ];
-        const body = bodyLines.join('\r\n');
-
-        const mailto = `mailto:goodluckkingsband@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-        if(status){ status.textContent = 'Opening your email app…'; }
-        // Open the user's email client with the composed message
-        window.location.href = mailto;
-      });
-    })();
   </script>
 
   <!-- Structured data (basic) -->
