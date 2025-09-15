@@ -76,12 +76,28 @@
     @media(min-width:640px){.gallery{columns:2}}
     @media(min-width:960px){.gallery{columns:3}}
 
+    /* Videos (matches gallery look) */
+    .vgrid{columns:1;column-gap:16px}
+    .vgrid figure{break-inside:avoid;margin:0 0 16px;position:relative}
+    .vgrid figcaption{position:absolute;left:10px;bottom:10px;background:rgba(0,0,0,.45);padding:6px 10px;border-radius:10px;color:#efeff3;font-size:12px;border:1px solid rgba(255,255,255,.1)}
+    @media(min-width:640px){.vgrid{columns:2}}
+    @media(min-width:960px){.vgrid{columns:3}}
+
+    .video-thumb{width:100%;aspect-ratio:16/9;border:1px solid #1f1f2a;border-radius:14px;display:grid;place-items:center;cursor:pointer;position:relative;overflow:hidden;background: #111 var(--thumb) center/cover no-repeat;box-shadow:var(--shadow)}
+    .video-thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(0,0,0,.25) 65%,rgba(0,0,0,.45))}
+    .play-btn{position:relative;z-index:1;display:grid;place-items:center;width:64px;height:64px;border-radius:999px;background:rgba(0,0,0,.55);border:2px solid rgba(255,255,255,.35);box-shadow:0 6px 18px rgba(0,0,0,.4)}
+    .play-btn::before{content:"";display:block;margin-left:4px;border-style:solid;border-width:12px 0 12px 18px;border-color:transparent transparent transparent #fff}
+    .video-thumb:hover .play-btn{transform:scale(1.05)}
+    .video-frame{width:100%;aspect-ratio:16/9;border-radius:14px;overflow:hidden;border:1px solid #1f1f2a;box-shadow:var(--shadow)}
+    .video-frame iframe{width:100%;height:100%;border:0}
+
     /* Contact */
     .contact .card{background:linear-gradient(180deg,#141420,#0e0e15);border:1px solid #202033;border-radius:18px;padding:22px;box-shadow:var(--shadow)}
     .contact .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 
     /* Ensure anchors land below sticky header */
     #contact{scroll-margin-top:calc(var(--header-h, 60px) + 12px)}
+    #videos{scroll-margin-top:calc(var(--header-h, 60px) + 12px)}
 
     /* Footer */
     footer{border-top:1px solid #1b1b25;background:#0c0c12;color:var(--muted)}
@@ -259,6 +275,99 @@
       </div>
     </section>
 
+    <!-- NEW: Videos section -->
+    <section id="videos" aria-label="Video highlights">
+      <h3>Videos</h3>
+      <p class="lead">Clips from recent shows & sessions. Tap a thumbnail to play</p>
+
+      <div class="vgrid">
+        <!-- zftJkervZis -->
+        <figure>
+          <button class="video-thumb"
+                  type="button"
+                  aria-label="Play video: Live in St. Pete"
+                  data-id="zftJkervZis"
+                  style="--thumb:url('https://i.ytimg.com/vi/zftJkervZis/hqdefault.jpg')">
+            <span class="play-btn" aria-hidden="true"></span>
+            <span class="sr-only">Play</span>
+          </button>
+          <figcaption>Live in St. Pete</figcaption>
+          <noscript><a href="https://www.youtube.com/watch?v=zftJkervZis" target="_blank" rel="noopener">Watch on YouTube</a></noscript>
+        </figure>
+
+        <!-- kRRCX1ybGrs -->
+        <figure>
+          <button class="video-thumb"
+                  type="button"
+                  aria-label="Play video: Solo Acoustic Vibes"
+                  data-id="kRRCX1ybGrs"
+                  style="--thumb:url('https://i.ytimg.com/vi/kRRCX1ybGrs/hqdefault.jpg')">
+            <span class="play-btn" aria-hidden="true"></span>
+            <span class="sr-only">Play</span>
+          </button>
+          <figcaption>Solo Acoustic Vibes</figcaption>
+          <noscript><a href="https://www.youtube.com/watch?v=kRRCX1ybGrs" target="_blank" rel="noopener">Watch on YouTube</a></noscript>
+        </figure>
+
+        <!-- 73GsbeTEyn8 -->
+        <figure>
+          <button class="video-thumb"
+                  type="button"
+                  aria-label="Play video: John's Pass Seafood Fest"
+                  data-id="73GsbeTEyn8"
+                  style="--thumb:url('https://i.ytimg.com/vi/73GsbeTEyn8/hqdefault.jpg')">
+            <span class="play-btn" aria-hidden="true"></span>
+            <span class="sr-only">Play</span>
+          </button>
+          <figcaption>John's Pass Seafood Fest</figcaption>
+          <noscript><a href="https://www.youtube.com/watch?v=73GsbeTEyn8" target="_blank" rel="noopener">Watch on YouTube</a></noscript>
+        </figure>
+
+        <!-- bDB9PAdVnIo -->
+        <figure>
+          <button class="video-thumb"
+                  type="button"
+                  aria-label="Play video: Spotlight"
+                  data-id="bDB9PAdVnIo"
+                  style="--thumb:url('https://i.ytimg.com/vi/bDB9PAdVnIo/hqdefault.jpg')">
+            <span class="play-btn" aria-hidden="true"></span>
+            <span class="sr-only">Play</span>
+          </button>
+          <figcaption>Spotlight</figcaption>
+          <noscript><a href="https://www.youtube.com/watch?v=bDB9PAdVnIo" target="_blank" rel="noopener">Watch on YouTube</a></noscript>
+        </figure>
+
+        <!-- dBM4I-iyO-g -->
+        <figure>
+          <button class="video-thumb"
+                  type="button"
+                  aria-label="Play video: Bringing the Energy"
+                  data-id="dBM4I-iyO-g"
+                  style="--thumb:url('https://i.ytimg.com/vi/dBM4I-iyO-g/hqdefault.jpg')">
+            <span class="play-btn" aria-hidden="true"></span>
+            <span class="sr-only">Play</span>
+          </button>
+          <figcaption>Bringing the Energy</figcaption>
+          <noscript><a href="https://www.youtube.com/watch?v=dBM4I-iyO-g" target="_blank" rel="noopener">Watch on YouTube</a></noscript>
+        </figure>
+
+        <!-- f_PEnpFl6ms -->
+        <figure>
+          <button class="video-thumb"
+                  type="button"
+                  aria-label="Play video: Crowd Getting Hype"
+                  data-id="f_PEnpFl6ms"
+                  style="--thumb:url('https://i.ytimg.com/vi/f_PEnpFl6ms/hqdefault.jpg')">
+            <span class="play-btn" aria-hidden="true"></span>
+            <span class="sr-only">Play</span>
+          </button>
+          <figcaption>Crowd Getting Hype</figcaption>
+          <noscript><a href="https://www.youtube.com/watch?v=f_PEnpFl6ms" target="_blank" rel="noopener">Watch on YouTube</a></noscript>
+        </figure>
+      </div>
+    </section>
+    <!-- /Videos -->
+
     <section id="contact" class="contact">
       <h3>Booking & Contact</h3>
       <div class="card">
@@ -349,6 +458,18 @@
 
     // Current year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // --- Video thumbs -> embed on click ---
+    document.querySelectorAll('.video-thumb').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const id = btn.getAttribute('data-id');
+        const parent = btn.parentElement;
+        const frame = document.createElement('div');
+        frame.className = 'video-frame';
+        frame.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>';
+        btn.replaceWith(frame);
+      }, { passive:false });
+    });
   </script>
 
   <!-- Structured data (basic) -->
