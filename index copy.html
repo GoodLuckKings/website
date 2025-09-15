@@ -80,6 +80,9 @@
     .contact .card{background:linear-gradient(180deg,#141420,#0e0e15);border:1px solid #202033;border-radius:18px;padding:22px;box-shadow:var(--shadow)}
     .contact .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 
+    /* Ensure anchors land below sticky header */
+    #contact{scroll-margin-top:calc(var(--header-h, 60px) + 12px)}
+
     /* Footer */
     footer{border-top:1px solid #1b1b25;background:#0c0c12;color:var(--muted)}
     footer .container{display:flex;gap:16px;align-items:center;justify-content:space-between;padding:18px 0}
@@ -113,14 +116,23 @@
   </style>
   <link rel="preload" as="image" href="https://goodluckkings.github.io/website/assets/DSC03936.jpg" />
   <script>
-    // Small helper: smooth scroll for in-page links
-    addEventListener('click', e => {
-      const a = e.target.closest('a[href^="#"]');
-      if(!a) return;
-      const id = a.getAttribute('href').slice(1);
-      const el = document.getElementById(id);
-      if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); }
-    }, {passive:true});
+    // Smooth scroll for in-page links with sticky-header offset
+    (function(){
+      const header = document.querySelector('header');
+      const offset = () => (header?.offsetHeight || 0) + 12; // extra breathing room
+      document.addEventListener('click', function(e){
+        const a = e.target.closest('a[href^="#"]');
+        if(!a) return;
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if(!el) return;
+        e.preventDefault();
+        const top = el.getBoundingClientRect().top + window.scrollY - offset();
+        window.scrollTo({ top, behavior:'smooth' });
+        // Keep the hash in the URL (optional but nice for sharing)
+        history.replaceState(null, '', '#'+id);
+      }, { passive:false }); // important: allow preventDefault
+    })();
   </script>
 </head>
 <body>
@@ -217,32 +229,32 @@
           <figcaption>Live in St. Pete</figcaption>
         </figure>
         <figure>
-          <img src="https://goodluckkings.github.io/website/assets/DSC03905.jpg" loading="lazy" alt="Guitar and vocal performance" data-caption="Solo set" />
-          <figcaption>Solo set</figcaption>
+          <img src="https://goodluckkings.github.io/website/assets/acousticsolo.jpg" loading="lazy" alt="Guitar and vocal performance" data-caption="Solo set" />
+          <figcaption>Solo Acoustic Vibes</figcaption>
         </figure>
         <figure>
-          <img src="https://goodluckkings.github.io/website/assets/DSC03915.jpg" loading="lazy" alt="Onstage energy with the crowd" data-caption="Onstage" />
-          <figcaption>Onstage</figcaption>
+          <img src="https://goodluckkings.github.io/website/assets/glkjohnspass2.jpg" loading="lazy" alt="Johns Pass Seafood Fest" data-caption="Onstage" />
+          <figcaption>John's Pass Seafood Fest</figcaption>
         </figure>
         <figure>
           <img src="https://goodluckkings.github.io/website/assets/DSC03936.jpg" loading="lazy" alt="Spotlight performance" data-caption="Spotlight" />
           <figcaption>Spotlight</figcaption>
         </figure>
         <figure>
-          <img src="https://goodluckkings.github.io/website/assets/DSC03943.jpg" loading="lazy" alt="Dynamic guitar moment" data-caption="Guitar" />
-          <figcaption>Guitar</figcaption>
+          <img src="https://goodluckkings.github.io/website/assets/singingsolo.jpg" loading="lazy" alt="Dynamic guitar moment" data-caption="Guitar" />
+          <figcaption>Bringing the Energy</figcaption>
         </figure>
         <figure>
-          <img src="https://goodluckkings.github.io/website/assets/DSC03948.jpg" loading="lazy" alt="Good Luck Kings together on stage" data-caption="Good Luck Kings" />
-          <figcaption>Good Luck Kings</figcaption>
+          <img src="https://goodluckkings.github.io/website/assets/3rdfridaysh.jpg" loading="lazy" alt="Good Luck Kings together on stage" data-caption="Good Luck Kings" />
+          <figcaption>3rd Friday in Safety Harbor</figcaption>
         </figure>
         <figure>
-          <img src="https://goodluckkings.github.io/website/assets/DSC03953.jpg" loading="lazy" alt="Moody stage lighting" data-caption="Lights" />
-          <figcaption>Lights</figcaption>
+          <img src="https://goodluckkings.github.io/website/assets/trioatpalm.jpg" loading="lazy" alt="Moody stage lighting" data-caption="Lights" />
+          <figcaption>Trio at Palm Pavilion</figcaption>
         </figure>
         <figure>
-          <img src="https://goodluckkings.github.io/website/assets/DSC03961.jpg" loading="lazy" alt="Crowd enjoying the show" data-caption="Crowd" />
-          <figcaption>Crowd</figcaption>
+          <img src="https://goodluckkings.github.io/website/assets/crowdgettinghype.jpg" loading="lazy" alt="Crowd enjoying the show" data-caption="Crowd" />
+          <figcaption>Crowd Getting Hype</figcaption>
         </figure>
       </div>
     </section>
