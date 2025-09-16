@@ -102,7 +102,9 @@
     .contact .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 
     /* Ensure anchors land below sticky header */
-    #contact,#videos,#schedule{scroll-margin-top:calc(var(--header-h, 60px) + 12px)}
+    #contact{scroll-margin-top:calc(var(--header-h, 60px) + 12px)}
+    #videos{scroll-margin-top:calc(var(--header-h, 60px) + 12px)}
+    #schedule{scroll-margin-top:calc(var(--header-h, 60px) + 12px)}
 
     /* Footer */
     footer{border-top:1px solid #1b1b25;background:#0c0c12;color:var(--muted)}
@@ -110,11 +112,19 @@
     .socials{display:flex;gap:12px}
     .socials a{padding:8px 10px;border:1px solid #23233a;border-radius:10px}
 
-    /* Lightbox (shared for photos + schedule) */
+    /* Lightbox */
     .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;padding:24px;z-index:100}
     .lightbox.open{display:flex}
     .lightbox img{max-height:90vh;width:auto}
     .lightbox .close{position:absolute;top:12px;right:12px;background:#15151f;border:1px solid #2c2c3c;border-radius:12px;padding:10px 12px;color:#fff;cursor:pointer}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+    /* Rectangular modal for the schedule */
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;padding:16px;z-index:110}
+    .modal.open{display:flex}
+    .modal .panel{position:relative;background:#10101a;border:1px solid #24243a;border-radius:16px;box-shadow:var(--shadow);width:min(1100px,96vw);height:clamp(240px,65vh,520px);display:flex;align-items:center;justify-content:center;padding:10px}
+    .modal .panel img{max-width:100%;max-height:100%;object-fit:contain;border-radius:12px}
+    .modal .close{position:absolute;top:10px;right:10px;background:#15151f;border:1px solid #2c2c3c;border-radius:12px;padding:8px 10px;color:#fff;cursor:pointer}
 
     /* Mobile */
     @media(max-width:860px){
@@ -241,148 +251,18 @@
       </div>
     </section>
 
-    <<section id="band">
-  <div class="band">
-    <figure>
-      <img src="https://goodluckkings.github.io/website/assets/glkjohnspass.jpg" loading="lazy" alt="Good Luck Kings band playing to a crowd" />
-    </figure>
-    <div>
-      <span class="pill">Featured</span>
-      <h3>Good Luck Kings</h3>
-      <p class="lead">Good Luck Kings brings big-stage energy to any event — unique arrangements, catchy harmonies, tasteful guitar work, and a setlist that keeps the dance floor moving</p>
-      <ul>
-        <li>Formats: duo → full band</li>
-        <li>Styles: rock • reggae • alternative</li>
-        <li>Available for restaurants/bars, clubs, corporate, weddings and city events</li>
-      </ul>
-      <div class="cta">
-        <a class="btn" href="#contact">Book the Band</a>
-        <a class="btn secondary" href="#photos">See Photos</a>
-      </div>
-    </div>
-  </div>
-</section>
+    <!-- Schedule section (wide crop of actual image; expands on click) -->
+    <section id="schedule" aria-label="Show schedule">
+      <h3>Schedule</h3>
+      <p class="lead">Check out where the live music is all month long</p>
 
-<!-- Schedule section (wide crop of actual image; expands using the same lightbox) -->
-<section id="schedule" aria-label="Show schedule">
-  <h3>Schedule</h3>
-  <p class="lead">Check out where the live music is all month long</p>
-
-  <figure class="schedule-crop">
-    <button id="openSchedule" class="frame" type="button" aria-label="Open schedule image">
-      <img src="https://goodluckkings.github.io/website/assets/currentschedule.png" alt="Good Luck Kings — current schedule" loading="lazy" />
-      <span class="hint">Tap to expand</span>
-    </button>
-  </figure>
-</section>
-
-<section id="photos">
-  <h3>Photos</h3>
-  <p class="lead">A peek at recent shows. Tap any photo to view full-size</p>
-  <div class="gallery" aria-label="Photo gallery">
-    <figure>
-      <img src="https://goodluckkings.github.io/website/assets/cocosfulband.jpg" loading="lazy" alt="Close-up performance shot" data-caption="Live in St. Pete" />
-      <figcaption>Full Band at Cocos Crush OG</figcaption>
-    </figure>
-    <figure>
-      <img src="https://goodluckkings.github.io/website/assets/acousticsolo.jpg" loading="lazy" alt="Guitar and vocal performance" data-caption="Solo set" />
-      <figcaption>Solo Acoustic Vibes</figcaption>
-    </figure>
-    <figure>
-      <img src="https://goodluckkings.github.io/website/assets/glkjohnspass2.jpg" loading="lazy" alt="Johns Pass Seafood Fest" data-caption="Onstage" />
-      <figcaption>John's Pass Seafood Fest</figcaption>
-    </figure>
-    <figure>
-      <img src="https://goodluckkings.github.io/website/assets/singingsolo.jpg" loading="lazy" alt="Spotlight performance" data-caption="Spotlight" />
-      <figcaption>Bringing the Energy</figcaption>
-    </figure>
-    <figure>
-      <img src="https://goodluckkings.github.io/website/assets/DSC03936.jpg" loading="lazy" alt="Dynamic guitar moment" data-caption="Guitar" />
-      <figcaption>Spotlight</figcaption>
-    </figure>
-    <figure>
-      <img src="https://goodluckkings.github.io/website/assets/3rdfridaysh.jpg" loading="lazy" alt="Good Luck Kings together on stage" data-caption="Good Luck Kings" />
-      <figcaption>3rd Friday in Safety Harbor</figcaption>
-    </figure>
-    <figure>
-      <img src="https://goodluckkings.github.io/website/assets/trioatpalm.jpg" loading="lazy" alt="Moody stage lighting" data-caption="Lights" />
-      <figcaption>Trio at Palm Pavilion</figcaption>
-    </figure>
-    <figure>
-      <img src="https://goodluckkings.github.io/website/assets/crowdgettinghype.jpg" loading="lazy" alt="Crowd enjoying the show" data-caption="Crowd" />
-      <figcaption>Crowd Getting Hype</figcaption>
-    </figure>
-  </div>
-</section>
-
-<!-- Videos -->
-<section id="videos" aria-label="Video highlights">
-  <h3>Videos</h3>
-  <p class="lead">Clips from recent shows & sessions. Tap a thumbnail to play</p>
-
-  <div class="vgrid">
-    <figure>
-      <button class="video-thumb" type="button" aria-label="Play video: Live in St. Pete" data-id="zftJkervZis" style="--thumb:url('https://i.ytimg.com/vi/zftJkervZis/hqdefault.jpg')">
-        <span class="play-btn" aria-hidden="true"></span><span class="sr-only">Play</span>
-      </button>
-      <figcaption>Solo Looping Vibes</figcaption>
-      <noscript><a href="https://www.youtube.com/watch?v=zftJkervZis" target="_blank" rel="noopener">Watch on YouTube</a></noscript>
-    </figure>
-    <figure>
-      <button class="video-thumb" type="button" aria-label="Play video: Solo Acoustic Vibes" data-id="kRRCX1ybGrs" style="--thumb:url('https://i.ytimg.com/vi/kRRCX1ybGrs/hqdefault.jpg')">
-        <span class="play-btn" aria-hidden="true"></span><span class="sr-only">Play</span>
-      </button>
-      <figcaption>High Energy Clips</figcaption>
-      <noscript><a href="https://www.youtube.com/watch?v=kRRCX1ybGrs" target="_blank" rel="noopener">Watch on YouTube</a></noscript>
-    </figure>
-    <figure>
-      <button class="video-thumb" type="button" aria-label="Play video: John's Pass Seafood Fest" data-id="73GsbeTEyn8" style="--thumb:url('https://i.ytimg.com/vi/73GsbeTEyn8/hqdefault.jpg')">
-        <span class="play-btn" aria-hidden="true"></span><span class="sr-only">Play</span>
-      </button>
-      <figcaption>High Energy Clips</figcaption>
-      <noscript><a href="https://www.youtube.com/watch?v=73GsbeTEyn8" target="_blank" rel="noopener">Watch on YouTube</a></noscript>
-    </figure>
-    <figure>
-      <button class="video-thumb" type="button" aria-label="Play video: Spotlight" data-id="bDB9PAdVnIo" style="--thumb:url('https://i.ytimg.com/vi/bDB9PAdVnIo/hqdefault.jpg')">
-        <span class="play-btn" aria-hidden="true"></span><span class="sr-only">Play</span>
-      </button>
-      <figcaption>Live Recording - Whiskey Wings Oldsmar</figcaption>
-      <noscript><a href="https://www.youtube.com/watch?v=bDB9PAdVnIo" target="_blank" rel="noopener">Watch on YouTube</a></noscript>
-    </figure>
-    <figure>
-      <button class="video-thumb" type="button" aria-label="Play video: Bringing the Energy" data-id="dBM4I-iyO-g" style="--thumb:url('https://i.ytimg.com/vi/dBM4I-iyO-g/hqdefault.jpg')">
-        <span class="play-btn" aria-hidden="true"></span><span class="sr-only">Play</span>
-      </button>
-      <figcaption>Live Recording - 3 Daughters St Pete</figcaption>
-      <noscript><a href="https://www.youtube.com/watch?v=dBM4I-iyO-g" target="_blank" rel="noopener">Watch on YouTube</a></noscript>
-    </figure>
-    <figure>
-      <button class="video-thumb" type="button" aria-label="Play video: Crowd Getting Hype" data-id="f_PEnpFl6ms" style="--thumb:url('https://i.ytimg.com/vi/f_PEnpFl6ms/hqdefault.jpg')">
-        <span class="play-btn" aria-hidden="true"></span><span class="sr-only">Play</span>
-      </button>
-      <figcaption>Duo Acoustic/Electric Vibes</figcaption>
-      <noscript><a href="https://www.youtube.com/watch?v=f_PEnpFl6ms" target="_blank" rel="noopener">Watch on YouTube</a></noscript>
-    </figure>
-  </div>
-</section>
-
-<section id="contact" class="contact">
-  <h3>Booking & Contact</h3>
-  <div class="card">
-    <div class="grid">
-      <div>
-        <p class="lead">Ready to lock in a date? Tell us about your event — venue, date, set length, and whether you want solo, duo, or the full band</p>
-        <p><a class="btn" href="mailto:goodluckkingsband@gmail.com?subject=Booking%20Inquiry%20for%20Christian%20Gabriel&amp;body=Hi%20Christian%2C%20we%27d%20love%20to%20book%20you%20for...">Email for booking</a></p>
-        <p style="margin-top:.5rem"><a href="mailto:goodluckkingsband@gmail.com">goodluckkingsband@gmail.com</a></p>
-        <p style="color:var(--muted);font-size:14px">Perfer a DM? Links for Instagram and Facebook are at the bottom of the page</p>
-        <figure style="margin-top:10px">
-          <img src="https://goodluckkings.github.io/website/assets/headerphotoblue.jpg" alt="Christian Gabriel performing live with acoustic guitar" loading="lazy" />
-        </figure>
-      </div>
-    </div>
-  </div>
-</section>
-
+      <figure class="schedule-crop">
+        <button id="openSchedule" class="frame" type="button" aria-label="Open schedule image">
+          <img src="https://goodluckkings.github.io/website/assets/currentschedule.png" alt="Good Luck Kings — current schedule" loading="lazy" />
+          <span class="hint">Tap to expand</span>
+        </button>
+      </figure>
+    </section>
 
     <section id="photos">
       <h3>Photos</h3>
