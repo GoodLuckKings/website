@@ -105,6 +105,8 @@
     #contact{scroll-margin-top:calc(var(--header-h, 60px) + 12px)}
     #videos{scroll-margin-top:calc(var(--header-h, 60px) + 12px)}
     #schedule{scroll-margin-top:calc(var(--header-h, 60px) + 12px)}
+    /* NEW: Tip section anchor offset */
+    #tip{scroll-margin-top:calc(var(--header-h, 60px) + 12px)}
 
     /* Footer */
     footer{border-top:1px solid #1b1b25;background:#0c0c12;color:var(--muted)}
@@ -133,6 +135,21 @@
     /* Outlined headline style (double outline like reference) */
     .outlined{position:relative;color:#fff;-webkit-text-stroke:3px #000;text-shadow:2px 2px 0 #000,-2px 2px 0 #000,2px -2px 0 #000,-2px -2px 0 #000,0 3px 0 #000,0 0 10px rgba(0,0,0,.35)}
     .outlined::before{content:attr(data-text);position:absolute;inset:0;z-index:-1;color:transparent;-webkit-text-stroke:7px #fff}
+
+    /* NEW: Tip the Band styles (matches card/preview vibe) */
+    .tip-card{
+      display:flex;align-items:center;gap:16px;
+      background:var(--card);border:1px solid #1f1f2a;border-radius:16px;padding:18px;box-shadow:var(--shadow)
+    }
+    .tip-icon{
+      width:64px;height:64px;border-radius:16px;display:grid;place-items:center;
+      background:linear-gradient(135deg,var(--brand),var(--brand-2));
+      color:#111;flex:0 0 auto;box-shadow:0 8px 22px rgba(0,0,0,.35)
+    }
+    .tip-icon svg{width:34px;height:34px}
+    .tip-body p{margin:.25rem 0 0;color:#d9d9df}
+    .tip-link{display:inline-flex;align-items:center;gap:10px}
+    .tip-link:hover{transform:translateY(-1px)}
   </style>
   <link rel="preload" as="image" href="https://goodluckkings.github.io/website/assets/DSC03901.jpg" />
   <script>
@@ -255,6 +272,28 @@
       </figure>
     </section>
     <!-- END NEW SCHEDULE SECTION -->
+
+    <!-- BEGIN NEW TIP THE BAND SECTION (directly under Schedule) -->
+    <section id="tip" aria-label="Tip the band">
+      <h3>Tip the Band</h3>
+      <p class="lead">Send a tip to Christian or Good Luck Kings on Venmo by clicking the link</p>
+      <div class="tip-card">
+        <a class="tip-link" href="https://venmo.com/u/Goodluckkingsband" target="_blank" rel="noopener noreferrer" aria-label="Open Venmo profile in a new tab">
+          <span class="tip-icon" aria-hidden="true">
+            <!-- Simple 'V' payment icon -->
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="6" fill="currentColor" opacity=".2"></rect>
+              <path d="M7 7h4.6c2.8 0 4.4 1.6 4.4 3.9 0 3-2.2 5.4-5.2 7.1l-.9-2.3c1.9-1.1 3.2-2.5 3.4-3.9.1-.9-.5-1.6-1.8-1.6H9.7l2 6.6H8.7L7 7Z" fill="currentColor"></path>
+            </svg>
+          </span>
+          <div class="tip-body">
+            <strong>Venmo: @Goodluckkingsband</strong>
+            <p>Tap to open Venmo in a new tab</p>
+          </div>
+        </a>
+      </div>
+    </section>
+    <!-- END NEW TIP THE BAND SECTION -->
 
     <section id="photos">
       <h3>Photos</h3>
